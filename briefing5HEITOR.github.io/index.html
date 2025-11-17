@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PassportEdu - Login</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="components/navbar.js"></script>
+    <script src="components/footer.js"></script>
+</head>
+<body class="bg-gray-100">
+    <custom-navbar></custom-navbar>
+    
+    <div class="min-h-screen flex items-center justify-center px-4">
+        <div class="w-full max-w-md bg-white rounded-lg shadow-md overflow-hidden">
+            <div class="bg-indigo-600 py-6 px-8 text-center">
+                <i data-feather="book" class="text-white w-12 h-12 mx-auto"></i>
+                <h1 class="text-2xl font-bold text-white mt-4">PassportEdu</h1>
+                <p class="text-indigo-200 mt-2">Seu passaporte digital acadêmico</p>
+            </div>
+            
+            <div class="p-8">
+                <form id="loginForm" class="space-y-6">
+                    <div>
+                        <label for="ra" class="block text-sm font-medium text-gray-700">Número de Matrícula (RA)</label>
+                        <input type="text" id="ra" name="ra" required 
+                            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                    </div>
+                    
+                    <div>
+                        <button type="submit" 
+                            class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                            Acessar meu Passaporte
+                        </button>
+                    </div>
+                </form>
+                
+                <div class="mt-6 text-center text-sm text-gray-500">
+                    <p>Não consegue acessar? Fale com a coordenação.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <custom-footer></custom-footer>
+    
+    <script src="script.js"></script>
+    <script>
+        feather.replace();
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const ra = document.getElementById('ra').value;
+            localStorage.setItem('studentRA', ra);
+            window.location.href = 'passport.html';
+        });
+    </script>
+<script src="https://huggingface.co/deepsite/deepsite-badge.js"></script>
+</body>
+</html>

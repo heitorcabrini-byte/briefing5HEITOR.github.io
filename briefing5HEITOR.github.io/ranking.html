@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PassportEdu - Ranking</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="components/navbar.js"></script>
+    <script src="components/footer.js"></script>
+    <script src="components/ranking-item.js"></script>
+</head>
+<body class="bg-gray-100">
+    <custom-navbar active="ranking"></custom-navbar>
+    
+    <div class="container mx-auto px-4 py-8">
+        <h1 class="text-2xl font-bold text-gray-800 mb-8">Ranking de Carimbos</h1>
+        
+        <div class="bg-white rounded-lg shadow overflow-hidden">
+            <div class="grid grid-cols-12 bg-gray-100 p-4 font-medium text-gray-700">
+                <div class="col-span-1">#</div>
+                <div class="col-span-7">Aluno</div>
+                <div class="col-span-4 text-right">Carimbos</div>
+            </div>
+            
+            <div id="rankingContainer" class="divide-y divide-gray-200">
+                <!-- Ranking items will be inserted here by JavaScript -->
+            </div>
+        </div>
+    </div>
+    
+    <custom-footer></custom-footer>
+    
+    <script src="script.js"></script>
+    <script>
+        feather.replace();
+        document.addEventListener('DOMContentLoaded', function() {
+            const ra = localStorage.getItem('studentRA');
+            if (!ra) {
+                window.location.href = 'index.html';
+                return;
+            }
+            
+            loadRanking();
+        });
+    </script>
+</body>
+</html>

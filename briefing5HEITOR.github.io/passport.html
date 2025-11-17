@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PassportEdu - Eventos</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="components/navbar.js"></script>
+    <script src="components/footer.js"></script>
+    <script src="components/event-card.js"></script>
+</head>
+<body class="bg-gray-100">
+    <custom-navbar active="events"></custom-navbar>
+    
+    <div class="container mx-auto px-4 py-8">
+        <h1 class="text-2xl font-bold text-gray-800 mb-8">Próximos Eventos</h1>
+        
+        <div class="space-y-6" id="eventsContainer">
+            <!-- Event cards will be inserted here by JavaScript -->
+        </div>
+    </div>
+    
+    <custom-footer></custom-footer>
+    
+    <script src="script.js"></script>
+    <script>
+        feather.replace();
+        document.addEventListener('DOMContentLoaded', function() {
+            const ra = localStorage.getItem('studentRA');
+            if (!ra) {
+                window.location.href = 'index.html';
+                return;
+            }
+            
+            loadEvents();
+        });
+    </script>
+</body>
+</html>

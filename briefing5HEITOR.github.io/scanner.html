@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PassportEdu - Scanner</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>
+    <script src="components/navbar.js"></script>
+    <script src="components/footer.js"></script>
+</head>
+<body class="bg-gray-100">
+    <custom-navbar></custom-navbar>
+    
+    <div class="container mx-auto px-4 py-8">
+        <div class="max-w-md mx-auto bg-white rounded-lg shadow-md overflow-hidden">
+            <div class="bg-indigo-600 py-4 px-6">
+                <h1 class="text-xl font-bold text-white">Escanear QR Code</h1>
+            </div>
+            
+            <div class="p-6">
+                <div class="relative aspect-square border-4 border-dashed border-gray-300 rounded-lg">
+                    <video id="scanner" class="w-full h-full object-cover rounded" autoplay playsinline></video>
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <div class="border-2 border-indigo-500 rounded-lg w-64 h-64"></div>
+                    </div>
+                </div>
+                
+                <div id="scannerResult" class="mt-6 hidden">
+                    <div class="bg-green-50 border-l-4 border-green-500 p-4">
+                        <div class="flex">
+                            <div class="flex-shrink-0">
+                                <i data-feather="check-circle" class="text-green-500"></i>
+                            </div>
+                            <div class="ml-3">
+                                <p class="text-sm text-green-700" id="resultMessage"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-6">
+                    <button id="scanButton" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-md flex items-center justify-center">
+                        <i data-feather="camera" class="mr-2"></i>
+                        Iniciar Escaneamento
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <custom-footer></custom-footer>
+    
+    <script src="script.js"></script>
+    <script>
+        feather.replace();
+        document.addEventListener('DOMContentLoaded', function() {
+            const ra = localStorage.getItem('studentRA');
+            if (!ra) {
+                window.location.href = 'index.html';
+                return;
+            }
+            
+            setupScanner();
+        });
+    </script>
+</body>
+</html>
